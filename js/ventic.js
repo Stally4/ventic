@@ -241,13 +241,10 @@ exports.IX2EngineConstants = IX2EngineConstants;
 "use strict";
  // @wf-will-never-add-flow-to-this-file
 
-/* globals window, document, navigator, WEBFLOW_ENV_TEST */
+
 
 /* eslint-disable no-var */
 
-/**
- * Webflow: Core site library
- */
 
 var Webflow = {};
 var modules = {};
@@ -339,12 +336,7 @@ function removeReady(module) {
     return readyFn !== module.ready;
   });
 }
-/**
- * Webflow.push - Add a ready handler into secondary queue
- * @param {function} ready  Callback to invoke on domready
- */
-
-
+	
 Webflow.push = function (ready) {
   // If domready has already happened, invoke handler
   if (domready) {
@@ -486,9 +478,8 @@ Webflow.location = function (url) {
 };
 
 if (Webflow.env()) {
-  // Ignore redirects inside a Webflow design/edit environment
   Webflow.location = function () {};
-} // Webflow.ready - Call primary and secondary handlers
+} 
 
 
 Webflow.ready = function () {
@@ -516,12 +507,6 @@ function restoreModules() {
 
   _.each(modules, bindModule);
 }
-/**
- * Webflow.load - Add a window load handler that will run even if load event has already happened
- * @param  {function} handler
- */
-
-
 var deferLoad;
 
 Webflow.load = function (handler) {
@@ -538,7 +523,7 @@ function bindLoad() {
 
   deferLoad = new $.Deferred();
   $win.on('load', deferLoad.resolve);
-} // Webflow.destroy - Trigger a destroy event for all modules
+}
 
 
 Webflow.destroy = function (options) {
